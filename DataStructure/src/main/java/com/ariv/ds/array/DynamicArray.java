@@ -2,13 +2,13 @@ package com.ariv.ds.array;
 
 import com.ariv.ds.base.BaseOperations;
 
-public class Array<T> implements BaseOperations<T> {
+public class DynamicArray<T> implements BaseOperations<T> {
 
 	private T[] arr;
 	private int size;
 
 	@SuppressWarnings("unchecked")
-	public Array(int size) {
+	public DynamicArray(int size) {
 		arr = (T[]) new Object[size];
 		size = 0;
 	}
@@ -55,7 +55,7 @@ public class Array<T> implements BaseOperations<T> {
 			throw new ArrayIndexOutOfBoundsException();
 		}
 		arr[index] = null;
-		size--;
+		--size;
 	}
 
 	/**
@@ -72,6 +72,9 @@ public class Array<T> implements BaseOperations<T> {
 	 * Retrieve on given index
 	 */
 	public T get(int index) {
+		if (index < 0 || index > size) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
 		return arr[index];
 	}
 
