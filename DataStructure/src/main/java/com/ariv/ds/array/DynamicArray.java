@@ -1,11 +1,18 @@
 package com.ariv.ds.array;
 
+import java.util.Collection;
+
 import com.ariv.ds.base.BaseOperations;
 
 public class DynamicArray<T> implements BaseOperations<T> {
 
 	private T[] arr;
 	private int size;
+	
+	public DynamicArray(Collection<? extends T> c) {
+		arr = (T[]) c.toArray();
+		size = arr.length;
+	}
 
 	@SuppressWarnings("unchecked")
 	public DynamicArray(int size) {
