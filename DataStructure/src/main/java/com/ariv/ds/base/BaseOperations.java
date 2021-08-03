@@ -20,6 +20,6 @@ public interface BaseOperations<T> {
 
 	public boolean isFull();
 	
-	public boolean find(T t);
+	public int find(T t);
 	
 }

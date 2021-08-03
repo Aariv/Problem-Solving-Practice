@@ -30,6 +30,20 @@ public class DynamicArray<T> implements BaseOperations<T> {
 		if (index < 0 || index > size) {
 			throw new ArrayIndexOutOfBoundsException();
 		}
+		// Increase the size if current array is full. 
+		if(isFull()) {
+			@SuppressWarnings("unchecked")
+			T[] newArray = (T[]) new Object[size * 2];
+			for(int i = 0; i < size; ++i) {
+				newArray[i] = arr[i];
+			}
+			arr = newArray;
+		}
+		
+		// Insert at provided index
+		for(int i = size -1; i >= index; --i) {
+			arr[i+1] = arr[i];
+		}
 		arr[index] = t;
 		++size;
 	}
@@ -38,11 +52,12 @@ public class DynamicArray<T> implements BaseOperations<T> {
 	 * Remove element by value
 	 */
 	public void remove(T t) {
-		for (int i = 0; i < size; ++i) {
-			if (arr[i].equals(t)) {
-				arr[i] = null;
-				--size;
+		int index = find(t);
+		if (index != -1) {
+			for(int i = index; i <= size; ++i) {
+				arr[i] = arr[i+1];
 			}
+			--size;
 		}
 		return;
 	}
@@ -54,7 +69,9 @@ public class DynamicArray<T> implements BaseOperations<T> {
 		if (index < 0 || index > size) {
 			throw new ArrayIndexOutOfBoundsException();
 		}
-		arr[index] = null;
+		for(int i = index; i <= size; ++i) {
+			arr[i] = arr[i+1];
+		}
 		--size;
 	}
 
@@ -96,19 +113,19 @@ public class DynamicArray<T> implements BaseOperations<T> {
 	 * Determine whether array is full
 	 */
 	public boolean isFull() {
-		return isEmpty();
+		return size == arr.length;
 	}
 
 	/**
 	 * Determine element is available in the array
 	 */
-	public boolean find(T t) {
-		for (T ele : arr) {
-			if (ele.equals(t)) {
-				return true;
+	public int find(T t) {
+		for (int i = 0; i <= size; ++i) {
+			if (arr[i].equals(t)) {
+				return i;
 			}
 		}
-		return false;
+		return -1;
 	}
 
 	@Override

@@ -99,13 +99,13 @@ public class Array<T> implements BaseOperations<T> {
 	/**
 	 * Determine element is available in the array
 	 */
-	public boolean find(T t) {
-		for (T ele : arr) {
-			if (ele.equals(t)) {
-				return true;
+	public int find(T t) {
+		for (int i = 0; i <= size; ++i) {
+			if (arr[i].equals(t)) {
+				return i;
 			}
 		}
-		return false;
+		return -1;
 	}
 
 	@Override
