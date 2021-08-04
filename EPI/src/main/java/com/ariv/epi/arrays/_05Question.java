@@ -20,15 +20,20 @@ public class _05Question {
 		DynamicArray<Integer> arr = new DynamicArray<Integer>(Arrays.asList(10, 3, 6, 9, 2, 4, 15, 23));
 		int k = 5;
 		// Bruteforce
-		
 		// 10, 3, 6, 9, 2, 4, 15, 23
 		// 2, 3, 4, 6, 9, 10, 15, 23
 		kthSmallestBruteForce(arr, k);
 		// Min-Heap
-
+		kthSmallestHeap(arr, k);
 		// Max-Heap
 
 	}
+
+	// TODO: After Learning PriorityQueue 
+	private static void kthSmallestHeap(DynamicArray<Integer> arr, int k) {
+		
+	}
+
 
 	private static void kthSmallestBruteForce(DynamicArray<Integer> arr, int k) {
 		sort(arr);
