@@ -9,6 +9,7 @@
 	<modules>
 		<module>EPI</module>
 		<module>DataStructure</module>
+		<module>DSA-programiz</module>
 	</modules>
 
 	<build>
