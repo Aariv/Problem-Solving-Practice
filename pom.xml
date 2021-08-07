@@ -10,6 +10,7 @@
 		<module>EPI</module>
 		<module>DataStructure</module>
 		<module>DSA-programiz</module>
+		<module>DSA-WilliamFiset</module>
 	</modules>
 
 	<build>
