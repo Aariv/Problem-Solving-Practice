@@ -25,11 +25,6 @@ public class Array<T> implements Iterable<T> {
 		return length;
 	}
 
-	@Override
-	public Iterator<T> iterator() {
-		return null;
-	}
-
 	public boolean isEmpty() {
 		return size() == 0;
 	}
@@ -66,5 +61,77 @@ public class Array<T> implements Iterable<T> {
 			arr = newArray;
 		}
 		arr[length++] = ele;
+	}
+
+	public T removeAt(int index) {
+		if (index >= length && index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		T data = arr[index];
+		T[] newArray = (T[]) new Object[length - 1];
+		for (int i = 0, j = 0; i < length; i++, j++) {
+			if (i == index) {
+				j--;
+			} else {
+				newArray[j] = arr[i];
+			}
+		}
+		arr = newArray;
+		length--;
+		return data;
+	}
+
+	public boolean remove(Object obj) {
+		for (int i = 0; i < length; ++i) {
+			if (arr[i].equals(obj)) {
+				removeAt(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int indexOf(Object obj) {
+		for (int i = 0; i < length; ++i) {
+			if (arr[i].equals(obj)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public boolean contains(Object obj) {
+		return indexOf(obj) != -1;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			int index = 0;
+
+			@Override
+			public boolean hasNext() {
+				return index < length;
+			}
+
+			@Override
+			public T next() {
+				return arr[index++];
+			}
+		};
+	}
+
+	@Override
+	public String toString() {
+		if (length == 0) {
+			return "[]";
+		} else {
+			StringBuilder sb = new StringBuilder(length).append("[");
+			for (int i = 0; i < length - 1; ++i) {
+				sb.append(arr[i] + ",");
+			}
+			sb.append(arr[length - 1] + "]");
+			return sb.toString();
+		}
 	}
 }
