@@ -1,6 +1,6 @@
 package com.ariv.williamfiset;
 
-public class IntroToBigOh {
+public class _03IntroToBigOh {
 
 	public static void main(String[] args) {
 		// How much time does this algorithm need to finish?
