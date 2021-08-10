@@ -1,16 +1,24 @@
 package com.ariv.williamfiset.queues;
 
-public class Outline {
+public class _11Outline {
 
 	/**
 	 * Discussion about Queues
 	 * 
 	 *  What is a Queue?
 	 *  
+	 *  	LIFO
+	 *  
 	 *  Terminology
 	 *  
-	 *  When and where is a queue used?
+	 *  	Enqueue
+	 *  	Dequeue
+	 *  	Peek
 	 *  
+	 *  When and where is a queue used?
+	 *  	Round Robin, 
+	 *  	Web Server(First Comes, First Serve)
+	 *  	
 	 *  Complexity Analysis
 	 *  
 	 *  Queue BFS examples

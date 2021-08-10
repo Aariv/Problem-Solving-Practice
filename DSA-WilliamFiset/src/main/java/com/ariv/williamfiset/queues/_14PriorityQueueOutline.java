@@ -1,6 +1,6 @@
 package com.ariv.williamfiset.queues;
 
-public class PriorityQueueOutline {
+public class _14PriorityQueueOutline {
 
 	/**
 	 * Discussion & Examples of PQs
