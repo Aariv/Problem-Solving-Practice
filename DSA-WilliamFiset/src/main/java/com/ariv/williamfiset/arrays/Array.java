@@ -6,8 +6,8 @@ import java.util.Iterator;
 public class Array<T> implements Iterable<T> {
 
 	private T[] arr;
-	private int length;
-	private int capacity;
+	private int length; // the user will know 
+	private int capacity; // for the internal 
 
 	public Array() {
 
@@ -61,6 +61,15 @@ public class Array<T> implements Iterable<T> {
 			arr = newArray;
 		}
 		arr[length++] = ele;
+	}
+	
+	public void add(int index, T ele) {
+		if (index >= length && index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		for (int i = length - 1; i >= index; --i) {
+			arr[i+1] = arr[i];
+		}
 	}
 
 	public T removeAt(int index) {
