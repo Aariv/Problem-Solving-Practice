@@ -39,5 +39,22 @@ public class _02QueueOutline {
 	 *   return the value pointed by FRONT
 	 *   increase the FRONT index by 1
 	 *   for the last element reset values of FRONT and REAR = -1
+	 *   
+	 *  Implementation of Queue
+	 *  
+	 *  Limitation of Queue
+	 *   Since we reset FRONT, REAR to -1, unable to make use of the empty spaces once queue becomes empty.
+	 *   to resolve this we can make Circular Queue.
+	 *  
+	 *  Complexity Analysis
+	 *   Using array 
+	 *    enqueue - O(1)
+	 *    dequeue - O(1)
+	 *    
+	 *  Applications:
+	 *  	CPU Scheduling
+	 *      Queue is used for synchronization IO Buffers, pipes etc
+	 *      Handling of interrupts in OS
+	 *      Call center phone systems.
 	 */
 }
