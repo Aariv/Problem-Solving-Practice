@@ -12,6 +12,7 @@
 		<module>DSA-programiz</module>
 		<module>DSA-WilliamFiset</module>
 		<module>Algorithms-Abdul-Bari</module>
+		<module>CCI</module>
 	</modules>
 
 	<build>
