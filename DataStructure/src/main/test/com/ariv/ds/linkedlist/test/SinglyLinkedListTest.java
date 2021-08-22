@@ -2,6 +2,7 @@ package com.ariv.ds.linkedlist.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.ariv.ds.linkedlist.SinglyLinkedList;
@@ -46,6 +47,8 @@ public class SinglyLinkedListTest {
 		assertEquals(3, list.size());
 		list.remove("E");
 		assertEquals("[H, L]", list.toString());
+		list.remove("H");
+		assertEquals("[L]", list.toString());
 	}
 	
 }

@@ -138,8 +138,8 @@ public class SinglyLinkedList<E> implements CoreOperations<E> {
 		} else {
 			prev.next = trav.next;
 			result = true;
+			size--;
 		}
-		size--;
 		return result;
 	}
 
@@ -205,5 +205,11 @@ public class SinglyLinkedList<E> implements CoreOperations<E> {
 		}
 		sb.append(trav.data + "]");
 		return sb.toString();
+	}
+
+	@Override
+	public E get(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -24,8 +24,17 @@ public interface CoreOperations<E> {
 	
 	public void set(int pos, E e);
 	
+	public E get(int index);
+	
 	public int size();
 	
 	public boolean isEmpty();
 	
+	default void push(E e) {
+		
+	}
+	
+	default E pop() {
+		return null;
+	}
 }

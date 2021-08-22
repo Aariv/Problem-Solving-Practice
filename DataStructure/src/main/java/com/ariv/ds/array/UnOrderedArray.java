@@ -113,4 +113,9 @@ public class UnOrderedArray<E> implements CoreOperations<E> {
 		sb.append(arr[size - 1] + "]");
 		return sb.toString();
 	}
+
+	@Override
+	public E get(int index) {
+		return arr[index];
+	}
 }
