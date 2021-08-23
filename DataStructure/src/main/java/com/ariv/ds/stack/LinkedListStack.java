@@ -1,101 +1,62 @@
 package com.ariv.ds.stack;
 
-import com.ariv.ds.CoreOperations;
-import com.ariv.ds.linkedlist.DoublyLinkedList;
+import com.ariv.ds.StackOperations;
 
-public class LinkedListStack<E> implements CoreOperations<E> {
+public class LinkedListStack<E> implements StackOperations<E> {
 
-	private DoublyLinkedList<E> list = new DoublyLinkedList<E>();
-	private int top = -1;
+	@SuppressWarnings("hiding")
+	private class Node<E> {
+		private E data;
+		private Node<E> next;
 
+		public Node(E data) {
+			this.data = data;
+		}
+
+		public Node(E data, Node<E> next) {
+			this.data = data;
+			this.next = next;
+		}
+
+	}
+
+	private int top = 0;
+	private Node<E> head;
+	
 	@Override
 	public void push(E e) {
-		list.addLast(e);
+		if(head == null) {
+			head = new Node<E>(e);
+		} else {
+			head = new Node<E>(e, head.next);
+		}
 		top++;
 	}
 
 	@Override
 	public E pop() {
-		E ele = list.removeLast();
+		if(isEmpty()) {
+			throw new IllegalArgumentException("Stack Underflow");
+		}
+		E ele = head.data;
+		head = head.next;
 		top--;
 		return ele;
 	}
 
 	@Override
-	public void add(E e) {
-		push(e);
-	}
-
-	@Override
-	public void add(int pos, E e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addFirst(E e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addLast(E e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public E removeFirst() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E removeLast() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean contains(Object obj) {
-		return list.contains(obj);
-	}
-
-	@Override
-	public int indexOf(Object obj) {
-		return list.indexOf(obj);
-	}
-
-	@Override
-	public void set(int pos, E e) {
-
-	}
-
-	@Override
-	public E get(int index) {
-		return null;
-	}
-
-	@Override
-	public int size() {
-		return top + 1;
+	public E peek() {
+		return head.data;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return size() == -1;
+		return false;
+	}
+
+	@Override
+	public int size() {
+		return top;
 	}
 
 }

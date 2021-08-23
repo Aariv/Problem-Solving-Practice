@@ -1,43 +1,48 @@
 package com.ariv.ds.stack;
 
 import com.ariv.ds.CoreOperations;
-import com.ariv.ds.array.UnOrderedArray;
+import com.ariv.ds.StackOperations;
 
-public class ArrayStack<E> implements CoreOperations<E> {
-	
-	UnOrderedArray<E> stackArray = new UnOrderedArray<E>();
+public class ArrayStack<E> implements CoreOperations<E>, StackOperations<E> {
+
+	private E[] arr;
 	private int top;
-	
+
 	public ArrayStack() {
-		this.top = -1;
+		this(5);
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public ArrayStack(int capacity) {
+		this.top = -1;
+		arr = (E[]) new Object[capacity];
+	}
+
 	public void add(E e) {
-		stackArray.add(e);
-		top++;
+		arr[++top] = e;
 	}
 
 	public void add(int pos, E e) {
-		//TODO: 
+		// TODO
 	}
 
 	public void addFirst(E e) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	public void addLast(E e) {
-		// TODO 
-		
+		// TODO
+
 	}
 
 	public E removeFirst() {
-		// TODO 
+		// TODO
 		return null;
 	}
 
 	public E removeLast() {
-		return stackArray.removeLast();
+		return null;
 	}
 
 	public E remove(int index) {
@@ -51,25 +56,15 @@ public class ArrayStack<E> implements CoreOperations<E> {
 	}
 
 	public boolean contains(Object obj) {
-		for(int i = 0; i < size(); ++i) {
-			if(stackArray.get(i).equals(obj)) {
-				return true;
-			}
-		}
 		return false;
 	}
 
 	public int indexOf(Object obj) {
-		for(int i = 0; i < size(); ++i) {
-			if(stackArray.get(i).equals(obj)) {
-				return i;
-			}
-		}
 		return -1;
 	}
 
 	public void set(int pos, E e) {
-		
+
 	}
 
 	public int size() {
@@ -82,11 +77,12 @@ public class ArrayStack<E> implements CoreOperations<E> {
 
 	@Override
 	public E pop() {
-		E ele = removeLast();
-		top--;
+		if (isEmpty())
+			throw new IllegalArgumentException("Stack overflow");
+		E ele = arr[top--];
 		return ele;
 	}
-	
+
 	@Override
 	public void push(E e) {
 		add(e);
@@ -94,6 +90,11 @@ public class ArrayStack<E> implements CoreOperations<E> {
 
 	@Override
 	public E get(int index) {
-		return stackArray.get(index);
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		return arr[top];
 	}
 }

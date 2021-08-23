@@ -30,11 +30,4 @@ public interface CoreOperations<E> {
 	
 	public boolean isEmpty();
 	
-	default void push(E e) {
-		
-	}
-	
-	default E pop() {
-		return null;
-	}
 }
