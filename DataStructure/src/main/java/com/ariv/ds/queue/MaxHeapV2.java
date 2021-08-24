@@ -1,14 +1,14 @@
 package com.ariv.ds.queue;
 
-public class MinHeap extends CommonMethods {
+public class MaxHeapV2 extends CommonMethods {
 
 	private int capacity;
 
-	public MinHeap() {
+	public MaxHeapV2() {
 		this(11);
 	}
 
-	public MinHeap(int capacity) {
+	public MaxHeapV2(int capacity) {
 		this.capacity = capacity;
 		this.size = 0;
 		this.items = new int[this.capacity];
@@ -25,7 +25,7 @@ public class MinHeap extends CommonMethods {
 		// Get the parent of the last node
 		// Compare the child node's value and check if the value is maximum
 		// Swap if parent node has greater value since it is minheap.
-		while (hasParent(index) && getParent(index) > items[index]) {
+		while (hasParent(index) && getParent(index) < items[index]) {
 			int temp = getParent(index);
 			items[getParentIndex(index)] = items[index];
 			items[index] = temp;
@@ -39,11 +39,11 @@ public class MinHeap extends CommonMethods {
 		int index = 0;
 		while (hasLeftChild(index)) {
 			int smallIndex = leftChildIndex(index);
-			if (hasRightChild(index) && items[rightChildIndex(index)] < items[smallIndex]) {
+			if (hasRightChild(index) && items[rightChildIndex(index)] > items[smallIndex]) {
 				smallIndex = rightChildIndex(index);
 			}
 
-			if (items[index] < items[smallIndex]) {
+			if (items[index] > items[smallIndex]) {
 				break;
 			} else {
 				int temp = items[index];
@@ -79,7 +79,7 @@ public class MinHeap extends CommonMethods {
 	}
 
 	public static void main(String[] args) {
-		MinHeap heap = new MinHeap();
+		MaxHeapV2 heap = new MaxHeapV2();
 		// 85, 8, 95, 9, 150, 5
 		heap.add(85);
 		heap.add(8);
