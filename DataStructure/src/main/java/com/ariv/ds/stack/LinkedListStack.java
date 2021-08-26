@@ -28,7 +28,9 @@ public class LinkedListStack<E> implements StackOperations<E> {
 		if(head == null) {
 			head = new Node<E>(e);
 		} else {
-			head = new Node<E>(e, head.next);
+			Node<E> newNode = new Node<E>(e);
+			newNode.next = head;
+			head = newNode;
 		}
 		top++;
 	}
@@ -51,7 +53,7 @@ public class LinkedListStack<E> implements StackOperations<E> {
 
 	@Override
 	public boolean isEmpty() {
-		return false;
+		return size() == 0;
 	}
 
 	@Override
