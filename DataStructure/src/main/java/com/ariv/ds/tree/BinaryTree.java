@@ -122,6 +122,86 @@ public class BinaryTree {
 			System.out.print(stack2.pop().data + ", ");
 		}
 	}
+	
+	public Node deleteNode(Node root, int key) {
+		// Pointer to store the parent of the current node
+		Node parent = null;
+		
+		// Start with root node
+		Node curr = root;
+		
+		// Search a key in the BST and set it's parent pointer
+		while(curr != null && curr.data != key) {
+			// Update the parent to the current node
+			parent = curr;
+			
+			// if the given key is less than the current node, go to the right subtree
+			if(key < curr.data) {
+				curr = curr.left;
+			} else {
+				curr = curr.right;
+			}
+		}
+		// return if the key is not found in the tree
+		if(root == null)
+			return root;
+		
+		// CASE 1: Node to be deleted has no children i.e leaf node
+		if(curr.left == null && curr.right == null) {
+			// if the node to be deleted is not a root node
+			// then set it's parent left/right child to null
+			if(curr != root) {
+				if(parent.left == curr) {
+					parent.left = null;
+				} else {
+					parent.right = null;
+				}
+			}
+			// if the node has only a root node
+			else {
+				root = null;
+			}
+		}
+		
+		// CASE 2: Node to be deleted has two children
+		if(curr.left != null && curr.right != null) {
+			// Find it's inorder successor node
+			Node successor = getMinimumKey(curr.right);
+			
+			// Store successor value
+			int val = successor.data;
+			
+			// recursively delete the successor. Note the successlor will have at most one child
+			deleteNode(root, val);
+			
+			// Copy the value of successor to the current node
+			curr.data = val;
+		}
+		
+		// CASE 3: Node to be deleted has one child
+		else {
+			Node child = (curr.left != null) ? curr.left : curr.right;
+			
+			// If the node to be deleted is a root node, set its parent to its child
+			if(curr != root) {
+				if(curr == parent.left) {
+					parent.left = child;
+				} else {
+					parent.right = child;
+				}
+			} else {
+				root = child;
+			}
+		}
+		return root;
+	}
+
+	private Node getMinimumKey(Node right) {
+		while(right.left != null) {
+			right = right.left;
+		}
+		return right;
+	}
 
 	public static void main(String[] args) {
 		Node root = new Node(10);
@@ -151,5 +231,9 @@ public class BinaryTree {
 		System.out.println();
 		bTree.postorderIterative(root);
 		System.out.println();
+		System.out.println();
+		
+		System.out.println("DELETE A NODE");
+		
 	}
 }
