@@ -1,5 +1,5 @@
 package com.ariv.gfg.easy.array;
 
-public class __06LargeFactorial {
+public class _06LargeFactorial {
 
 }
