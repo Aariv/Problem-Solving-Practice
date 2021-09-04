@@ -1,8 +1,6 @@
 package com.ariv.gfg.easy.hashing;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class _01KeyPair {
 
